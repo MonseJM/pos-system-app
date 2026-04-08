@@ -50,7 +50,7 @@ Aplicación web desarrollada en Angular para la gestión de un sistema de punto 
  ### Vizualizacion del proyecto
 
 Vista del login y home 
-![login](assets/imagenes/login.png)
+![login](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/login.png)
 ![home](assets/imagenes/home.png)
 ![hom](assets/imagenes/hom.png)
 
