@@ -51,8 +51,8 @@ Aplicación web desarrollada en Angular para la gestión de un sistema de punto 
 
 Vista del login y home 
 ![login](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/login.png)
-![home](assets/imagenes/home.png)
-![hom](assets/imagenes/hom.png)
+![home](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/home.png)
+![hom](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/hom.png)
 
 Vista general con gráficas de ventas por día y métricas clave.
 
