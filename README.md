@@ -1,59 +1,64 @@
-# App
+# 🖥️ POS System Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+![Angular](https://img.shields.io/badge/Angular-17-red)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Status](https://img.shields.io/badge/Status-Active-success)
 
-## Development server
+---
 
-To start a local development server, run:
+## 📌 Descripción
 
-```bash
-ng serve
-```
+Aplicación web desarrollada en Angular para la gestión de un sistema de punto de venta. Permite visualizar ventas, generar facturas y analizar datos mediante gráficos interactivos.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Tecnologías
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- ⚡ Angular
+- 🧠 TypeScript
+- 🎨 HTML + CSS
+- 📊 Chart.js (gráficas)
+- 🔗 Consumo de API REST
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🧩 Funcionalidades
 
-```bash
-ng generate --help
-```
+- ✔ Visualización de ventas
+- ✔ Descarga de XML y PDF
+- ✔ Dashboard con gráficas
+- ✔ Modal de detalles de factura
+- ✔ Consumo de API backend
+- ✔ Diseño responsive
 
-## Building
+---
 
-To build the project run:
+## 📸 Vistas principales
 
-```bash
-ng build
-```
+### 📊 Dashboard
+- Gráficas de ventas por día  
+- Totales y métricas  
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+### 🧾 Facturas
+- Lista de facturas  
+- Botones de descarga (XML / PDF)  
+- Modal con información detallada  
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 🔗 Backend
 
-## Running end-to-end tests
+Este frontend consume la API:
 
-For end-to-end (e2e) testing, run:
+👉 https://github.com/TU-USUARIO/pos-system-api
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## ⚙️ Instalación
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 1️⃣ Clonar repositorio
+```bash id="cln123"
+git clone https://github.com/TU-USUARIO/pos-system-app.git
+cd pos-system-app
