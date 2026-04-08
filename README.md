@@ -82,9 +82,4 @@ Este frontend consume la API:
 
 
 
-## ⚙️ Instalación
 
-### 1️⃣ Clonar repositorio
-```bash id="cln123"
-git clone https://github.com/TU-USUARIO/pos-system-app.git
-cd pos-system-app
