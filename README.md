@@ -46,7 +46,7 @@ Aplicación web desarrollada en Angular para la gestión de un sistema de punto 
 
 ### Carrito
 ![carrito](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/carrito.png)
-Vista general con gráficas de ventas por día y métricas clave.
+
 
 ### 🧾 Facturas  
 - Botones de descarga (XML / PDF)
@@ -55,7 +55,7 @@ Vista general con gráficas de ventas por día y métricas clave.
     xml
       ![xml](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/xml.png)
     pdf
-      ![pdf](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/pdf.png)
+      ![pdg](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/pdg.png)
 
 ### 📊 Dashboard
 - Productos
