@@ -76,7 +76,7 @@ Gráficas de ventas por día
 
 Este frontend consume la API:
 
-👉 https://github.com/TU-USUARIO/pos-system-api
+👉 https://github.com/MonseJM/pos-system-api
 
 ---
 
