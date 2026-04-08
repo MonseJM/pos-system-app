@@ -53,6 +53,7 @@ Vista del login y home
 ![login](assets/imagenes/login.png)
 ![home](assets/imagenes/home.png)
 ![hom](assets/imagenes/hom.png)
+
 Vista general con gráficas de ventas por día y métricas clave.
 
 ![Dashboard](assets/images/dashboard.png)
