@@ -38,24 +38,26 @@ Aplicación web desarrollada en Angular para la gestión de un sistema de punto 
 ### 📊 Dashboard
 - Gráficas de ventas por día  
 - Totales y métricas  
+ 
 
 ---
+ ## 📸 Visualización del proyecto
 
-### 🧾 Facturas
-- Lista de facturas  
-- Botones de descarga (XML / PDF)  
-- Modal con información detallada  
+### 🔐 Login y Home
 
----
- ### Vizualizacion del proyecto
-
-Vista del login y home 
 ![login](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/login.png)
 ![home](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/home.png)
 ![hom](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/hom.png)
 
+### Carrito
+![carrito](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/carrito.png)
 Vista general con gráficas de ventas por día y métricas clave.
 
+### 🧾 Facturas  
+- Botones de descarga (XML / PDF)
+  ![Facturar](https://github.com/MonseJM/pos-system-app/blob/main/src/assets/imagenes/Facturar.png)
+  
+- Modal con información detallada 
 ![Dashboard](assets/images/dashboard.png)
 
 ---
