@@ -1,0 +1,98 @@
+<!-- FONDO DIFUMINADO -->
+<div class="bg-blobs">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+</div>
+<app-navbar></app-navbar>
+<div class="cart-container">
+
+  <div class="cart-header">
+    <h1>Tu Carrito</h1>
+    <p>Revisa tus productos antes de comprar ✨</p>
+  </div>
+
+  <div class="cart-grid">
+
+    <!-- LISTA -->
+    <section class="cart-list">
+
+      <div *ngIf="items.length === 0" class="empty">
+        <h2>Tu carrito está vacío</h2>
+        <p>Agrega productos para verlos aquí 💖</p>
+        <a routerLink="/home" class="btn-go">Ir a comprar</a>
+      </div>
+
+      <div *ngFor="let item of items" class="cart-item">
+
+        <div class="info">
+          <h3>{{item.product.name}}</h3>
+
+          <div class="meta">
+            <span class="price">${{item.product.price}}</span>
+            <span class="size">Talla: {{item.product.Size}}</span>
+
+            <span class="color">
+              Color:
+              <span class="color-box" [style.background]="item.product.Color"></span>
+              <span class="color-text">{{item.product.Color}}</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- CANTIDAD -->
+        <div class="qty">
+          <button (click)="disminuir(item)">−</button>
+          <span>{{item.quantity}}</span>
+          <button (click)="aumentar(item)">+</button>
+        </div>
+
+        <!-- TOTAL ITEM -->
+        <div class="item-total">
+          ${{item.product.price * item.quantity}}
+        </div>
+
+        <!-- QUITAR -->
+        <button class="remove" (click)="quitar(item)">✕</button>
+
+      </div>
+    </section>
+
+    <!-- RESUMEN -->
+    <aside class="summary" *ngIf="items.length > 0">
+
+      <h2>Resumen</h2>
+
+      <div class="row">
+        <span>Subtotal</span>
+        <b>${{subtotal}}</b>
+      </div>
+
+      <div class="row">
+        <span>Envío</span>
+        <b>$0</b>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row total">
+        <span>Total</span>
+        <b>${{total}}</b>
+      </div>
+
+      <button class="btn-buy" (click)="comprar()" [disabled]="items.length===0">
+        Comprar
+      </button>
+
+      <button class="btn-clear" (click)="vaciar()">
+        Vaciar carrito
+      </button>
+
+    </aside>
+
+  </div>
+</div>
+
+<!-- modal-->
+

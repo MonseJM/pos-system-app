@@ -27,7 +27,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ]
           },
           "configurations": {
@@ -76,16 +77,21 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               {
+                
                 "glob": "**/*",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "02eba020-a80b-432e-84d6-e05b65bbfade"
   }
 }

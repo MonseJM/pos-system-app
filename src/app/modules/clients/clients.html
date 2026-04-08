@@ -1,0 +1,128 @@
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <h2>Clientes Borcelle</h2>
+      <p>Gestiona tus clientes registrados ✨</p>
+    </div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+
+    <div class="search">
+      <span class="material-icons"></span>
+      <input [(ngModel)]="search" placeholder="Buscar cliente..." />
+    </div>
+
+    <select [(ngModel)]="filterActive">
+      <option value="all">Todos</option>
+      <option value="active">Activos</option>
+      <option value="inactive">Inactivos</option>
+    </select>
+
+    <select [(ngModel)]="orderBy">
+      <option value="az">A - Z</option>
+      <option value="za">Z - A</option>
+    </select>
+
+    <button class="btn-secondary" (click)="limpiarFiltros()">
+      Limpiar
+    </button>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+
+          <th>RFC</th>
+          <th>Activo</th>
+          <th class="th-actions">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let c of filteredClientes">
+
+          <td class="name">{{ c.name }}</td>
+
+          <td>{{ c.email }}</td>
+
+          <td>{{ c.rfc || 'N/A'}}</td>
+
+    
+
+          <td>
+            <span class="status"
+              [class.ok]="c.isActive"
+              [class.bad]="!c.isActive">
+              {{ c.isActive ? 'Sí' : 'No' }}
+            </span>
+          </td>
+
+          <td class="actions">
+              <button class="btn-mini" (click)="ver(c)">
+                <span class="material-icons">visibility</span>
+              </button>
+
+              <button class="btn-mini danger"
+                      (click)="desactivar(c)"
+                      [disabled]="!c.isActive">
+                <span class="material-icons">block</span>
+              </button>
+
+
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ================= MODAL DETAILS ================= -->
+<div class="modal-bg" *ngIf="showDetailsModal">
+  <div class="modal">
+
+    <div class="modal-header">
+      <h3>Información del cliente</h3>
+      <button class="x" (click)="cerrarDetalles()">✕</button>
+    </div>
+
+    <div class="modal-body" *ngIf="selectedCliente">
+
+      <div class="details">
+        <p><b>Nombre:</b> {{ selectedCliente.name }}</p>
+        <p><b>Email:</b> {{ selectedCliente.email }}</p>
+
+        <p><b>RFC:</b> {{ selectedCliente.rfc || 'No hay info' }}</p>
+
+        <p><b>Regimen Fiscal:</b> {{ selectedCliente.fiscalRegime || 'No hay info' }}</p>
+       <p><b>Uso CFDI:</b> {{ selectedCliente.cfdiUse || 'No hay info' }}</p>
+       <p><b>Código Postal:</b> {{ selectedCliente.postalCode || 'No hay info' }}</p>
+
+        <p>
+          <b>Activo:</b>
+          {{ selectedCliente.isActive ? 'Sí' : 'No' }}
+        </p>
+
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-primary" (click)="cerrarDetalles()">
+        Cerrar
+      </button>
+    </div>
+
+  </div>
+</div>

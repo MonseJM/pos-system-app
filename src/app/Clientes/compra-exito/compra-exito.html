@@ -1,0 +1,83 @@
+<div class="bg-blobs">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+</div>
+<app-navbar></app-navbar>
+<div class="success-container">
+  <div class="card">
+    
+    <div class="icon">🎉</div>
+
+    <h1>¡Compra realizada!</h1>
+    <p class="message">
+      Gracias por tu compra 💖  
+      Tu pedido fue procesado correctamente.
+    </p>
+
+    <div class="details">
+      <p><strong>Fecha:</strong> {{ fecha }}</p>
+      <p *ngIf="saleId"><strong>No. Pedido:</strong> #{{ saleId }}</p>
+    </div>
+
+    <div class="buttons">
+      <button class="btn-primary" routerLink="/home">Volver al inicio</button>
+      
+      <button class="btn-secondary" routerLink="/carrito">Ver carrito</button>
+
+      <button class="btn-primary"
+        (click)="abrirModalFacturacion()">
+  Facturar esta compra
+</button>
+    </div>
+
+
+  </div>
+</div>
+<div class="modal-backdrop" *ngIf="mostrarModal">
+
+  <div class="modal">
+
+    <h3>Datos Fiscales</h3>
+
+
+  <input type="text" placeholder="Nombre o Razón Social" [(ngModel)]="customer.name">
+
+  <input type="text" placeholder="RFC" [(ngModel)]="customer.rfc">
+
+  <select [(ngModel)]="customer.fiscalRegime">
+    <option value="">Seleccione Régimen Fiscal</option>
+    <option value="601">601 - General de Ley Personas Morales</option>
+    <option value="605">605 - Sueldos y Salarios</option>
+    <option value="612">612 - Personas Físicas con Actividades Empresariales</option>
+  </select>
+
+  <select [(ngModel)]="customer.cfdiUse">
+    <option value="">Uso del CFDI</option>
+    <option value="G01">G01 - Adquisición de mercancías</option>
+    <option value="G03">G03 - Gastos en general</option>
+    <option value="P01">P01 - Por definir</option>
+  </select>
+
+  <input type="text" placeholder="Código Postal" [(ngModel)]="customer.postalCode">
+
+  <input type="email" placeholder="Correo electrónico" [(ngModel)]="customer.email">
+
+    <div class="modal-actions">
+      <button class="btn-secondary" (click)="cerrarModal()">
+        Cancelar
+      </button>
+
+      <button class="btn-primary" (click)="guardarYFacturar()">
+        Guardar y Facturar
+      </button>
+      <button class="btn-secondary" (click)="descargarTodo()">
+        Descargar Factura
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

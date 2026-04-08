@@ -1,0 +1,77 @@
+<!-- FONDO DIFUMINADO -->
+<div class="bg-blobs">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- LOGO -->
+    <div class="sidebar-logo">
+      <img src="imagenes/la.png" alt="Borcelle Logo">
+      <p>Admin Panel</p>
+    </div>
+
+    <!-- MENU -->
+    <nav class="menu">
+
+      <a routerLink="/admin/home" routerLinkActive="active">
+        <i class="fa-solid fa-gauge-high"></i>
+        Home
+      </a>
+
+      <a routerLink="/admin/products" routerLinkActive="active">
+        <i class="fa-solid fa-cart-shopping"></i>
+        Productos
+      </a>
+
+      <a routerLink="/admin/clients" routerLinkActive="active">
+        <i class="fa-solid fa-bag-shopping"></i>
+        Clientes
+      </a>
+
+      <a routerLink="/admin/ventas" routerLinkActive="active">
+        <i class="fa-solid fa-user-group"></i>
+        Ventas
+      </a>
+
+      <a routerLink="/admin/analisis" routerLinkActive="active">
+        <i class="fa-solid fa-user-group"></i>
+        Análisis
+      </a>
+
+      <a class="logout" routerLink="/login">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Salir
+      </a>
+
+    </nav>
+
+  </aside>
+
+  <!-- CONTENIDO -->
+  <main class="content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <h1>Dashboard</h1>
+
+      <button class="profile-btn">
+        <span class="circle"></span>
+        Perfil
+      </button>
+    </header>
+
+    <!-- AQUÍ CAMBIAN LAS VISTAS -->
+    <section class="panel">
+      <router-outlet></router-outlet>
+    </section>
+
+  </main>
+
+</div>

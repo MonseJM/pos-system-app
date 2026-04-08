@@ -1,0 +1,214 @@
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <h2>Productos Borcelle</h2>
+      <p>Administra tu inventario con estilo ✨</p>
+    </div>
+
+    <button class="btn-primary" (click)="abrirCrear()">
+      <span class="material-icons">add</span>
+      Agregar
+    </button>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+
+    <div class="search">
+      <span class="material-icons"></span>
+      <input [(ngModel)]="search" placeholder="Buscar producto..." />
+    </div>
+
+    <select [(ngModel)]="filterActive">
+      <option value="all">Todos</option>
+      <option value="active">Activos</option>
+      <option value="inactive">Inactivos</option>
+    </select>
+
+    <select [(ngModel)]="filterSize">
+      <option value="all">Todas las tallas</option>
+      <option *ngFor="let s of sizesDisponibles" [value]="s">
+        {{ s }}
+      </option>
+    </select>
+
+    <button class="btn-secondary" (click)="limpiarFiltros()">
+      Limpiar
+    </button>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Size</th>
+          <th>Color</th>
+          <th>Activo</th>
+          <th class="th-actions">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of filteredProducts">
+
+          <td class="name">
+            {{ p.name }}
+          </td>
+
+          <td>
+            ${{ p.price }}
+          </td>
+
+          <td>
+            {{ p.stock }}
+          </td>
+
+          <td>
+            <span class="pill">{{ p.size }}</span>
+          </td>
+
+          <td>
+            <div class="color-box">
+              <span class="color" [style.background]="p.color"></span>
+              <small>{{ p.color }}</small>
+            </div>
+          </td>
+
+          <td>
+            <span class="status" [class.ok]="p.isActive" [class.bad]="!p.isActive">
+              {{ p.IsActive ? 'Sí' : 'No' }}
+            </span>
+          </td>
+
+          <td class="actions">
+            <button class="btn-mini" (click)="ver(p)">
+              <span class="material-icons">visibility</span>
+            </button>
+
+            <button class="btn-mini" (click)="editar(p)">
+              <span class="material-icons">edit</span>
+            </button>
+
+            <button class="btn-mini danger" (click)="desactivar(p)" [disabled]="!p.isActive">
+              <span class="material-icons">block</span>
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ================= MODAL FORM (CREATE / EDIT) ================= -->
+<div class="modal-bg" *ngIf="showFormModal">
+  <div class="modal">
+
+    <div class="modal-header">
+      <h3>
+        {{ modo === 'create' ? 'Agregar producto' : 'Editar producto' }}
+      </h3>
+
+      <button class="x" (click)="cerrarForm()">✕</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="grid-form">
+
+        <div class="field">
+          <label>Nombre</label>
+          <input [(ngModel)]="form.name" placeholder="Ej. Labial Cherry" />
+        </div>
+
+        <div class="field">
+          <label>Size</label>
+          <input [(ngModel)]="form.size" placeholder="Ej. S / M / L" />
+        </div>
+
+        <div class="field">
+          <label>Precio</label>
+          <input type="number" [(ngModel)]="form.price" />
+        </div>
+
+        <div class="field">
+          <label>Stock</label>
+          <input type="number" [(ngModel)]="form.stock" />
+        </div>
+
+        <div class="field">
+          <label>Imagen</label>
+          <input [(ngModel)]="form.imageUrl" placeholder="URL de la imagen" />
+        </div>
+
+        <div class="field">
+          <label>Color</label>
+          <div class="color-input">
+            <input type="color" [(ngModel)]="form.color" />
+            <input [(ngModel)]="form.color" placeholder="#ff2e63" />
+          </div>
+        </div>
+
+        <div class="field full">
+          <label>Descripción</label>
+          <textarea [(ngModel)]="form.description" placeholder="Describe el producto..."></textarea>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="cerrarForm()">Cancelar</button>
+      <button class="btn-primary" (click)="guardar()">
+        {{ modo === 'create' ? 'Guardar' : 'Actualizar' }}
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= MODAL DETAILS ================= -->
+<div class="modal-bg" *ngIf="showDetailsModal">
+  <div class="modal">
+
+    <div class="modal-header">
+      <h3>Información del producto</h3>
+      <button class="x" (click)="cerrarDetalles()">✕</button>
+    </div>
+
+    <div class="modal-body" *ngIf="selectedProduct">
+
+      <div class="details">
+        <p><b>Nombre:</b> {{ selectedProduct.name }}</p>
+        <p><b>Descripción:</b> {{ selectedProduct.description }}</p>
+        <p><b>Precio:</b> ${{ selectedProduct.price }}</p>
+        <p><b>Stock:</b> {{ selectedProduct.stock }}</p>
+        <p><b>Size:</b> {{ selectedProduct.size }}</p>
+
+        <p class="color-row">
+          <b>Color:</b>
+          <span class="color" [style.background]="selectedProduct.color"></span>
+          {{ selectedProduct.color }}
+        </p>
+
+        <p><b>Activo:</b> {{ selectedProduct.isActive ? 'Sí' : 'No' }}</p>
+        <p><b>Creado:</b> {{ selectedProduct.createdAt | date:'medium' }}</p>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-primary" (click)="cerrarDetalles()">Cerrar</button>
+    </div>
+
+  </div>
+</div>

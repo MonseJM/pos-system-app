@@ -1,0 +1,97 @@
+<div class="page">
+
+  <!-- 🔥 HEADER -->
+  <div class="header">
+    <div>
+      <h2>📊 Análisis de Ventas</h2>
+      <p>Resumen y comportamiento de tus ventas</p>
+    </div>
+
+    <button class="btn-primary">
+      🔄 Actualizar
+    </button>
+  </div>
+
+  <!-- 🔍 TOOLBAR -->
+  <div class="toolbar">
+
+    <div class="search">
+      🔍
+      <input type="date" [(ngModel)]="startDate">
+    </div>
+
+    <div class="search">
+      📅
+      <input type="date" [(ngModel)]="endDate">
+    </div>
+
+    <button class="btn-secondary" (click)="filter()">
+      Filtrar
+    </button>
+
+  </div>
+
+  <!-- 💰 CARDS -->
+  <div class="cards">
+
+    <div class="card">
+      <h3>Ventas</h3>
+      <p>{{ summary?.totalSales | currency }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Impuestos</h3>
+      <p>{{ summary?.totalTax | currency }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Productos</h3>
+      <p>{{ summary?.totalProducts }}</p>
+    </div>
+
+  </div>
+
+  <!-- 📊 GRÁFICA -->
+  <div class="table-card" style="margin-bottom:20px;">
+    <div style="padding:20px;">
+      <canvas id="salesChart"></canvas>
+    </div>
+  </div>
+
+  <!-- 📋 TABLA -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Total</th>
+          <th>Impuesto</th>
+          <th>Productos</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let d of dailySales">
+          <td>{{ d.date | date:'shortDate' }}</td>
+          <td class="name">{{ d.total | currency }}</td>
+          <td>{{ d.tax | currency }}</td>
+          <td>
+            <span class="pill">
+              {{ d.products }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+
+      
+
+    </table>
+  </div>
+
+  <div class="table-card" style="margin-top:90px;">
+  <div style="padding:200px;">
+    <canvas id="donutChart"></canvas>
+  </div>
+</div>
+
+</div>

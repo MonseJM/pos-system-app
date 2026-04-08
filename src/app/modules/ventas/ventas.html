@@ -1,0 +1,107 @@
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <h2>Ventas / Facturas</h2>
+      <p>Historial de ventas 💸</p>
+    </div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+
+    <div class="search">
+      <span class="material-icons">search</span>
+      <input [(ngModel)]="search" placeholder="Buscar venta..." />
+    </div>
+
+    <select [(ngModel)]="filterStatus">
+      <option value="all">Todos</option>
+      <option value="Pendiente">Pendiente</option>
+      <option value="Pagado">Pagado</option>
+    </select>
+
+    <button class="btn-secondary" (click)="limpiarFiltros()">
+      Limpiar
+    </button>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Fecha</th>
+          <th class="th-actions">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let i of filteredInvoices">
+
+          <td>#{{ i.id }}</td>
+
+          <td>{{ i.customerName }}</td>
+
+          <td>${{ i.total }}</td>
+
+          <td>
+            <span class="status"
+              [class.ok]="i.status === 'Pagado'"
+              [class.bad]="i.status !== 'Pagado'">
+              {{ i.status || 'Pendiente' }}
+            </span>
+          </td>
+
+          <td>
+            {{ i.createdAt | date:'medium' }}
+          </td>
+
+          <td class="actions">
+
+            <button class="btn-mini" (click)="ver(i)">
+              <span class="material-icons">visibility</span>
+            </button>
+
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<div class="modal-bg" *ngIf="showDetailsModal">
+  <div class="modal">
+
+    <div class="modal-header">
+      <h3>Detalle de venta</h3>
+      <button class="x" (click)="cerrarDetalles()">✕</button>
+    </div>
+
+    <div class="modal-body" *ngIf="selectedInvoice">
+
+      <p><b>ID:</b> {{ selectedInvoice.id }}</p>
+      <p><b>Cliente:</b> {{ selectedInvoice.customerName }}</p>
+      <p><b>Subtotal:</b> ${{ selectedInvoice.subtotal }}</p>
+      <p><b>IVA:</b> ${{ selectedInvoice.tax }}</p>
+      <p><b>Total:</b> ${{ selectedInvoice.total }}</p>
+      <p><b>Status:</b> {{ selectedInvoice.status }}</p>
+      <p><b>UUID:</b> {{ selectedInvoice.uuid || 'No generado' }}</p>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-primary" (click)="cerrarDetalles()">Cerrar</button>
+    </div>
+
+  </div>
+</div>

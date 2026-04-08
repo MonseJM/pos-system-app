@@ -1,0 +1,99 @@
+<!-- FONDO DIFUMINADO -->
+<div class="bg-blobs">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+</div>
+
+<!-- NAVBAR SEPARADO -->
+<app-navbar></app-navbar>
+
+<!-- CONTENIDO -->
+<main class="shop">
+
+  <!-- HEADER -->
+  <section class="shop-header">
+   <img src="imagenes/ae.png" alt="BURCELLE Logo">
+  </section>
+
+  <!-- FILTROS -->
+  <section class="filters">
+
+    <div class="search">
+      <input type="text" placeholder="Buscar producto..." [(ngModel)]="searchText">
+    </div>
+
+    <select [(ngModel)]="filterSize">
+      <option value="">Todas las tallas</option>
+      <option *ngFor="let s of sizes" [value]="s">{{s}}</option>
+    </select>
+
+    <select [(ngModel)]="filterColor">
+      <option value="">Todos los colores</option>
+      <option *ngFor="let c of colors" [value]="c">{{c}}</option>
+    </select>
+
+    <label class="check">
+      <input type="checkbox" [(ngModel)]="onlyActive">
+      Solo activos
+    </label>
+
+    <select [(ngModel)]="orderBy">
+      <option value="az">Orden A-Z</option>
+      <option value="za">Orden Z-A</option>
+      <option value="priceLow">Precio menor</option>
+      <option value="priceHigh">Precio mayor</option>
+    </select>
+
+  </section>
+
+  <!-- GRID PRODUCTOS -->
+  <section class="grid">
+
+    <article class="card" *ngFor="let p of productosFiltrados()">
+
+      <!-- Badge activo -->
+      <div class="badge" [class.off]="!p.isActive">
+        {{ p.isActive ? 'Activo' : 'Desactivado' }}
+      </div>
+
+      <!-- Imagen -->
+      <div class="img-box">
+        <img [src]="p.imageUrl || 'imagenes/pa.jpg'" alt="Producto">
+      </div>
+
+      <!-- Info -->
+      <h3>{{p.name}}</h3>
+
+      <p class="price">$ {{p.price}}</p>
+
+      <div class="meta">
+        <span>Stock: {{p.stock}}</span>
+        <span>Talla: {{p.size}}</span>
+      </div>
+
+      <!-- Color -->
+      <div class="color">
+        <span>Color:</span>
+        <div class="color-box" [style.background]="p.color"></div>
+        <small>{{p.color}}</small>
+      </div>
+
+      <!-- Botones -->
+      <div class="actions">
+        <button class="btn ghost" (click)="verDetalle(p)">
+          Ver
+        </button>
+
+        <button class="btn" (click)="agregarCarrito(p)" [disabled]="!p.isActive || p.stock <= 0">
+          Agregar
+        </button>
+      </div>
+
+    </article>
+
+  </section>
+
+</main>
+
